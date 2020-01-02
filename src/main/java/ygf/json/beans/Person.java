@@ -1,13 +1,14 @@
 package ygf.json.beans;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Person {
     private String name;
 
     private Integer age;
 
-    private Date birthday;
+    private String desc;
 
     public String getName() {
         return name;
@@ -25,20 +26,30 @@ public class Person {
         this.age = age;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     @Override
-    public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", birthday=" + birthday +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Person person = (Person) o;
+        return Objects.equals(name, person.name) &&
+                Objects.equals(age, person.age) &&
+                Objects.equals(desc, person.desc);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, desc);
     }
 }
