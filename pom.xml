@@ -83,7 +83,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>ygf.json.jmh.JMH_Samle</mainClass>
+                            <mainClass>ygf.json.jmh.JsonSerializeListTest</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
