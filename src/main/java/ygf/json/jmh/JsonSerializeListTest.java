@@ -44,7 +44,7 @@ public class JsonSerializeListTest {
     }
 
     @Benchmark
-    public void jscksonTest() throws Exception{
+    public void jacksonTest() throws Exception{
         for (int i = 0; i < count; ++i){
             JacksonUtils.toJson(persons);
         }

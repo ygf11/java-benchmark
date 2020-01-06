@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 @State(Scope.Benchmark)
 public class JsonSerializeMapTest {
 
+
     @Param({"100000"})
     private int count;
 
@@ -44,7 +45,7 @@ public class JsonSerializeMapTest {
     }
 
     @Benchmark
-    public void jscksonTest() throws Exception {
+    public void jacksonTest() throws Exception {
         for (int i = 0; i < count; ++i) {
             JacksonUtils.toJson(persons);
         }
@@ -67,7 +68,6 @@ public class JsonSerializeMapTest {
         map.put("james1", james);
         return map;
     }
-
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()

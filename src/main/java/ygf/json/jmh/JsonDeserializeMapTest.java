@@ -12,15 +12,14 @@ import ygf.json.utils.GsonUtils;
 import ygf.json.utils.JacksonUtils;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.SECONDS)
 @State(Scope.Benchmark)
-public class JsonDeserializeListTest {
-
+public class JsonDeserializeMapTest {
     @Param({"1000000"})
     private int count;
 
@@ -29,14 +28,13 @@ public class JsonDeserializeListTest {
 
     @Setup
     public void setup() {
-        persons = createPersonList();
+        persons = createPersonMap();
     }
 
     @Benchmark
     public void gsonTest() {
         for (int i = 0; i < count; ++i) {
-            Type type = new TypeToken<List<Person>>() {
-            }.getType();
+            Type type = new TypeToken<Map<String,Person>>(){}.getType();
             GsonUtils.fromJson(persons, type);
         }
     }
@@ -44,7 +42,7 @@ public class JsonDeserializeListTest {
     @Benchmark
     public void fastJsonTest() {
         for (int i = 0; i < count; ++i) {
-            TypeReference type = new TypeReference<List<Person>>() {};
+            TypeReference type = new TypeReference<Map<String,Person>>(){};
             FastJsonUtils.fromJson(persons, type);
         }
     }
@@ -53,31 +51,32 @@ public class JsonDeserializeListTest {
     public void jacksonTest() throws Exception {
         for (int i = 0; i < count; ++i) {
             com.fasterxml.jackson.core.type.TypeReference type =
-                    new com.fasterxml.jackson.core.type.TypeReference<List<Person>>() {
-                    };
+                    new com.fasterxml.jackson.core.type.TypeReference<Map<String,Person>>() {};
             JacksonUtils.fromJson(persons, type);
         }
     }
 
-    private String createPersonList() {
+    private String createPersonMap() {
         Person bob = new Person("bob", 20, "I am a joy boy.....");
         Person james = new Person("james", 20, "I am a joy boy.....");
         Person lee = new Person("lee", 20, "I am a joy boy.....");
         Person sam = new Person("sam", 20, "I am a joy boy.....");
+        Person linx = new Person("linx", 20, "I am a joy boy.....");
 
-        List<Person> list = new ArrayList<>();
-        list.add(bob);
-        list.add(james);
-        list.add(lee);
-        list.add(sam);
-
-        return GsonUtils.toJson(list);
+        Map<String, Person> map = new HashMap<>();
+        map.put("bob",bob);
+        map.put("james",james);
+        map.put("lee", lee);
+        map.put("sam", sam);
+        map.put("linx", linx);
+        map.put("bob1", bob);
+        map.put("james1", james);
+        return GsonUtils.toJson(map);
     }
-
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
-                .include(JsonDeserializeListTest.class.getSimpleName())
+                .include(JsonDeserializeMapTest.class.getSimpleName())
                 .forks(1)
                 .build();
         new Runner(options).run();

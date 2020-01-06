@@ -1,6 +1,5 @@
 package ygf.json.jmh;
 
-
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
@@ -19,13 +18,12 @@ import java.util.concurrent.TimeUnit;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.SECONDS)
 @State(Scope.Benchmark)
-public class JsonSerializeTest {
-
+public class JsonDeserializeTest {
     @Param({"1000000"})
     private int count;
 
 
-    private Person person;
+    private String person;
 
     @Setup
     public void setup() {
@@ -35,31 +33,31 @@ public class JsonSerializeTest {
     @Benchmark
     public void gsonTest() {
         for (int i = 0; i < count; ++i) {
-            GsonUtils.toJson(person);
+            GsonUtils.fromJson(person, Person.class);
         }
     }
 
     @Benchmark
-    public void fastJsonTest(){
-        for (int i = 0; i < count; ++i){
-            FastJsonUtils.toJson(person);
+    public void fastJsonTest() {
+        for (int i = 0; i < count; ++i) {
+            FastJsonUtils.fromJson(person, Person.class);
         }
     }
 
     @Benchmark
-    public void jacksonTest() throws Exception{
-        for (int i = 0; i < count; ++i){
-            JacksonUtils.toJson(person);
+    public void jacksonTest() throws Exception {
+        for (int i = 0; i < count; ++i) {
+            JacksonUtils.fromJson(person, Person.class);
         }
     }
 
-    private Person createPerson() {
+    private String createPerson() {
         Person person = new Person();
         person.setName("bob");
         person.setAge(20);
         person.setDesc("I am a joy boy....");
 
-/*
+
         Person bob = newPerson("bob");
         Person james = newPerson("james");
         Person abc = newPerson("abc");
@@ -78,12 +76,11 @@ public class JsonSerializeTest {
 
         person.setFriends(friends);
 
- */
 
-        return person;
+        return GsonUtils.toJson(person);
     }
 
-    private Person newPerson(String name){
+    private Person newPerson(String name) {
         Person p = new Person();
         p.setName(name);
         p.setAge(20);
@@ -105,7 +102,7 @@ public class JsonSerializeTest {
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
-                .include(JsonSerializeTest.class.getSimpleName())
+                .include(JsonDeserializeTest.class.getSimpleName())
                 .forks(1)
                 .build();
         new Runner(options).run();
