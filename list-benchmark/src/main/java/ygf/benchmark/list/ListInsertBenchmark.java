@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * insert benchmark
+ * list insert benchmark
  *
  * @author yanggaofeng
  */
