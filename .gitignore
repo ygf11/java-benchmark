@@ -1,11 +1,5 @@
-/account/target
-/data/target
+/json-benchmar/target
 /target/
-/cluster/target
-/exchange/target
-/infrastructure/target
-/shared/target
-/web/target
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -60,3 +54,6 @@ mvnw
 mvnw.cmd
 .DS_Store
 \#*
+
+## emacs-tmp ##
+*~
