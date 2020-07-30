@@ -30,7 +30,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>ygf.benchmark.list.ListInsertBenchmark</mainClass>
+                            <mainClass>ygf.benchmark.list.ListIterateTest</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

@@ -1,4 +1,5 @@
-/json-benchmar/target
+/json-benchmark/target
+/list-benchmark/target
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
