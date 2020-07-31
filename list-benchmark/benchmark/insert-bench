@@ -1,0 +1,207 @@
+# JMH version: 1.22
+# VM version: JDK 1.8.0_261, Java HotSpot(TM) 64-Bit Server VM, 25.261-b12
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: ygf.benchmark.list.ListInsertBenchmark.arrayListHeadInsertTest
+# Parameters: (count = 100000)
+
+# Run progress: 0.00% complete, ETA 00:10:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 414.666 ms/op
+# Warmup Iteration   2: 414.432 ms/op
+# Warmup Iteration   3: 419.207 ms/op
+# Warmup Iteration   4: 438.182 ms/op
+# Warmup Iteration   5: 411.484 ms/op
+Iteration   1: 411.080 ms/op
+Iteration   2: 410.805 ms/op
+Iteration   3: 410.836 ms/op
+Iteration   4: 415.976 ms/op
+Iteration   5: 421.572 ms/op
+
+
+Result "ygf.benchmark.list.ListInsertBenchmark.arrayListHeadInsertTest":
+  414.054 ±(99.9%) 18.263 ms/op [Average]
+  (min, avg, max) = (410.805, 414.054, 421.572), stdev = 4.743
+  CI (99.9%): [395.791, 432.317] (assumes normal distribution)
+
+
+# JMH version: 1.22
+# VM version: JDK 1.8.0_261, Java HotSpot(TM) 64-Bit Server VM, 25.261-b12
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: ygf.benchmark.list.ListInsertBenchmark.arrayListMiddleInsertTest
+# Parameters: (count = 100000)
+
+# Run progress: 16.67% complete, ETA 00:08:59
+# Fork: 1 of 1
+# Warmup Iteration   1: 200.613 ms/op
+# Warmup Iteration   2: 199.907 ms/op
+# Warmup Iteration   3: 199.459 ms/op
+# Warmup Iteration   4: 200.207 ms/op
+# Warmup Iteration   5: 200.149 ms/op
+Iteration   1: 201.058 ms/op
+Iteration   2: 199.403 ms/op
+Iteration   3: 199.867 ms/op
+Iteration   4: 199.311 ms/op
+Iteration   5: 199.287 ms/op
+
+
+Result "ygf.benchmark.list.ListInsertBenchmark.arrayListMiddleInsertTest":
+  199.785 ±(99.9%) 2.885 ms/op [Average]
+  (min, avg, max) = (199.287, 199.785, 201.058), stdev = 0.749
+  CI (99.9%): [196.900, 202.670] (assumes normal distribution)
+
+
+# JMH version: 1.22
+# VM version: JDK 1.8.0_261, Java HotSpot(TM) 64-Bit Server VM, 25.261-b12
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: ygf.benchmark.list.ListInsertBenchmark.arrayListTailInsertTest
+# Parameters: (count = 100000)
+
+# Run progress: 33.33% complete, ETA 00:07:09
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.447 ms/op
+# Warmup Iteration   2: 0.423 ms/op
+# Warmup Iteration   3: 0.418 ms/op
+# Warmup Iteration   4: 0.425 ms/op
+# Warmup Iteration   5: 0.428 ms/op
+Iteration   1: 0.423 ms/op
+Iteration   2: 0.424 ms/op
+Iteration   3: 0.423 ms/op
+Iteration   4: 0.424 ms/op
+Iteration   5: 0.425 ms/op
+
+
+Result "ygf.benchmark.list.ListInsertBenchmark.arrayListTailInsertTest":
+  0.424 ±(99.9%) 0.003 ms/op [Average]
+  (min, avg, max) = (0.423, 0.424, 0.425), stdev = 0.001
+  CI (99.9%): [0.421, 0.427] (assumes normal distribution)
+
+
+# JMH version: 1.22
+# VM version: JDK 1.8.0_261, Java HotSpot(TM) 64-Bit Server VM, 25.261-b12
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: ygf.benchmark.list.ListInsertBenchmark.linkedListHeadInsertTest
+# Parameters: (count = 100000)
+
+# Run progress: 50.00% complete, ETA 00:05:20
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.791 ms/op
+# Warmup Iteration   2: 0.746 ms/op
+# Warmup Iteration   3: 0.746 ms/op
+# Warmup Iteration   4: 0.743 ms/op
+# Warmup Iteration   5: 0.743 ms/op
+Iteration   1: 0.756 ms/op
+Iteration   2: 0.804 ms/op
+Iteration   3: 0.776 ms/op
+Iteration   4: 0.753 ms/op
+Iteration   5: 0.691 ms/op
+
+
+Result "ygf.benchmark.list.ListInsertBenchmark.linkedListHeadInsertTest":
+  0.756 ±(99.9%) 0.160 ms/op [Average]
+  (min, avg, max) = (0.691, 0.756, 0.804), stdev = 0.042
+  CI (99.9%): [0.595, 0.916] (assumes normal distribution)
+
+
+# JMH version: 1.22
+# VM version: JDK 1.8.0_261, Java HotSpot(TM) 64-Bit Server VM, 25.261-b12
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: ygf.benchmark.list.ListInsertBenchmark.linkedListMiddleInsertTest
+# Parameters: (count = 100000)
+
+# Run progress: 66.67% complete, ETA 00:03:32
+# Fork: 1 of 1
+# Warmup Iteration   1: 4863.050 ms/op
+# Warmup Iteration   2: 4749.161 ms/op
+# Warmup Iteration   3: 4715.296 ms/op
+# Warmup Iteration   4: 4615.571 ms/op
+# Warmup Iteration   5: 5697.257 ms/op
+Iteration   1: 4708.810 ms/op
+Iteration   2: 4624.532 ms/op
+Iteration   3: 4807.222 ms/op
+Iteration   4: 4736.369 ms/op
+Iteration   5: 4704.635 ms/op
+
+
+Result "ygf.benchmark.list.ListInsertBenchmark.linkedListMiddleInsertTest":
+  4716.314 ±(99.9%) 253.113 ms/op [Average]
+  (min, avg, max) = (4624.532, 4716.314, 4807.222), stdev = 65.733
+  CI (99.9%): [4463.200, 4969.427] (assumes normal distribution)
+
+
+# JMH version: 1.22
+# VM version: JDK 1.8.0_261, Java HotSpot(TM) 64-Bit Server VM, 25.261-b12
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: ygf.benchmark.list.ListInsertBenchmark.linkedListTailInsertTest
+# Parameters: (count = 100000)
+
+# Run progress: 83.33% complete, ETA 00:01:55
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.685 ms/op
+# Warmup Iteration   2: 0.646 ms/op
+# Warmup Iteration   3: 0.645 ms/op
+# Warmup Iteration   4: 0.647 ms/op
+# Warmup Iteration   5: 0.641 ms/op
+Iteration   1: 0.644 ms/op
+Iteration   2: 0.647 ms/op
+Iteration   3: 0.611 ms/op
+Iteration   4: 0.603 ms/op
+Iteration   5: 0.606 ms/op
+
+
+Result "ygf.benchmark.list.ListInsertBenchmark.linkedListTailInsertTest":
+  0.622 ±(99.9%) 0.082 ms/op [Average]
+  (min, avg, max) = (0.603, 0.622, 0.647), stdev = 0.021
+  CI (99.9%): [0.540, 0.704] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:11:20
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                       (count)  Mode  Cnt     Score     Error  Units
+ListInsertBenchmark.arrayListHeadInsertTest      100000  avgt    5   414.054 ±  18.263  ms/op
+ListInsertBenchmark.arrayListMiddleInsertTest    100000  avgt    5   199.785 ±   2.885  ms/op
+ListInsertBenchmark.arrayListTailInsertTest      100000  avgt    5     0.424 ±   0.003  ms/op
+ListInsertBenchmark.linkedListHeadInsertTest     100000  avgt    5     0.756 ±   0.160  ms/op
+ListInsertBenchmark.linkedListMiddleInsertTest   100000  avgt    5  4716.314 ± 253.113  ms/op
+ListInsertBenchmark.linkedListTailInsertTest     100000  avgt    5     0.622 ±   0.082  ms/op
