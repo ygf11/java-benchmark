@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 @State(Scope.Benchmark)
-public class ListIterateTest {
+public class ListIterateBenchmark {
 
     @Param({"100000"})
     private int count;
@@ -79,7 +79,7 @@ public class ListIterateTest {
 
     public static void main(String[] args) throws Exception{
         Options options = new OptionsBuilder()
-                .include(ListIterateTest.class.getSimpleName())
+                .include(ListIterateBenchmark.class.getSimpleName())
                 .forks(1)
                 .build();
 
