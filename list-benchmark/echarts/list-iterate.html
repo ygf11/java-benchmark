@@ -14,9 +14,10 @@
       // 基于准备好的dom，初始化echarts实例
       var myChart = echarts.init(document.getElementById('main'));
 
+       //初始化数据
+      var category = ['linkedList-loop-get','linkedList-iterate','arraylist-loop-get','linkedList-iterte'];
 
-       var category = ['arrayList', 'linkedList'];
-      var data = [0.424, 0.622];
+      var data = [3543.655, 0.256, 0.058, 0.178];
 
 option = {
     tooltip: {
@@ -26,7 +27,7 @@ option = {
         }
     },
     title:[{
-                text:'tail-insert',
+                text:'iterate',
 	            top:'10%',
 	            left:'10%'
 	         }],
