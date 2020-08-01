@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 1000px;height:700px;"></div>
+<script type="text/javascript">
+
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'));
+
+      //初始化数据
+      var category = ['arraylist', 'linkedList'];
+      var data = [0.424, 0.622];
+
+option = {
+	  legend: {},
+	  tooltip: {},
+
+	  title:[{
+                text:'tail-insert',
+	            top:'10%'
+	         }],
+
+	  xAxis: [{
+              type: 'value',
+              axisLine: {
+                  show: false
+              },
+              axisTick: {
+	              show: false
+              },
+	          max:10
+          }],
+	  yAxis: [{
+              type: 'category',
+              data: category,
+              splitLine: {show: false},
+              axisLine: {
+                  show: false
+              },
+              axisTick: {
+                show: false
+              },
+              offset: 10,
+              nameTextStyle: {
+                  fontSize: 15
+              },
+              axisLabel:{
+                formatter: '{value} millisecods'
+              }
+          }],
+
+	  grid: [{
+               left: '30%',
+               right: '20%',
+               bottom: '55%',
+             }],
+
+	  series: [{
+                name: "100000 ops",
+                type: 'bar',
+                data: data,
+                barWidth: 14,
+                barGap: 10,
+                smooth: true,
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'right',
+	                offset: [5, -2],
+                        textStyle: {
+                            color: '#F68300',
+                            fontSize: 13
+                        }
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        barBorderRadius: 7
+                    },
+                    normal: {
+                        barBorderRadius: 7,
+                        color: new echarts.graphic.LinearGradient(
+                            0, 0, 1, 0,
+                            [
+                                {offset: 0, color: '#3977E6'},
+                                {offset: 1, color: '#37BBF8'}
+
+                            ]
+                        )
+                    }
+                }
+            }
+        ]
+};
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+
+
+</script>
+</body>
+</html>
