@@ -5,13 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ygf.json</groupId>
-    <artifactId>json-measurement</artifactId>
+    <artifactId>java-benchmark</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <modules>
         <module>json-benchmark</module>
         <module>list-benchmark</module>
+        <module>de-serializer-benchmark</module>
     </modules>
 
     <properties>
