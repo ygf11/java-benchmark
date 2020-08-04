@@ -12,12 +12,19 @@
     <artifactId>de-serializer-benchmark</artifactId>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
             <version>3.12.4</version>
         </dependency>
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-core</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-generator-annprocess</artifactId>
+            </dependency>
     </dependencies>
 
     <build>
@@ -28,7 +35,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>driver.Driver</mainClass>
+                            <mainClass>ygf.benchmark.jmh.Runner</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
