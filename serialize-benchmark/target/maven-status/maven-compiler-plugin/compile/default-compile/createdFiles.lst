@@ -1,0 +1,16 @@
+ygf/benchmark/protobuf/PersonUtil.class
+META-INF/CompilerHints
+ygf/benchmark/protobuf/People$Person$1.class
+ygf/benchmark/protobuf/People$1.class
+ygf/benchmark/protobuf/People$PersonOrBuilder.class
+ygf/serialize/benchmark/jmh/Runner.class
+ygf/serialize/benchmark/jmh/generated/Runner_jmhType_B1.class
+ygf/serialize/benchmark/jmh/generated/Runner_protoBufSerializerBench_jmhTest.class
+ygf/benchmark/protobuf/People.class
+ygf/benchmark/protobuf/People$Person$Builder.class
+ygf/serialize/benchmark/jmh/generated/Runner_jmhType.class
+ygf/serialize/benchmark/jmh/generated/Runner_jmhType_B2.class
+ygf/serialize/benchmark/jmh/generated/Runner_jmhType_B3.class
+META-INF/BenchmarkList
+ygf/benchmark/protobuf/People$Person$RelationsDefaultEntryHolder.class
+ygf/benchmark/protobuf/People$Person.class
