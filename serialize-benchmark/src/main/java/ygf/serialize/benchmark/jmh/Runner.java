@@ -28,6 +28,10 @@ public class Runner {
     @Param({"100000"})
     private int count;
 
+    public static void printSerializeSize(){
+        People.Person person = PersonUtil.build();
+        System.out.println("proto buf size:" + person.toByteArray().length);
+    }
 
     @Benchmark
     public void protoBufSerializerBench() {
@@ -38,6 +42,8 @@ public class Runner {
     }
 
     public static void main(String[] args) throws Exception {
+        printSerializeSize();
+
         Options options = new OptionsBuilder()
                 .include(Runner.class.getSimpleName())
                 .forks(1)
