@@ -13,6 +13,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import ygf.benchmark.protobuf.People;
 import ygf.benchmark.protobuf.PersonUtil;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -25,10 +26,10 @@ import java.util.concurrent.TimeUnit;
 @State(Scope.Benchmark)
 public class Runner {
 
-    @Param({"100000"})
+    @Param({"10"})
     private int count;
 
-    public static void printSerializeSize(){
+    public static void printSerializeSize() {
         People.Person person = PersonUtil.build();
         System.out.println("proto buf size:" + person.toByteArray().length);
     }
@@ -38,6 +39,16 @@ public class Runner {
         People.Person person = PersonUtil.build();
         for (int i = 0; i < count; ++i) {
             person.toByteArray();
+        }
+    }
+
+    @Benchmark
+    public void protoBufDeserializerBench() throws Exception {
+        People.Person person = PersonUtil.build();
+        byte[] byteArray = person.toByteArray();
+        for (int i = 0; i < count; ++i) {
+            People.Person data = People.Person.parseFrom(byteArray);
+            assert Objects.equals(data, person);
         }
     }
 

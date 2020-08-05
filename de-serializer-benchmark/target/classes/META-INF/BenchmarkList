@@ -1,1 +1,0 @@
-JMH S 34 ygf.serialize.benchmark.jmh.Runner S 76 ygf.serialize.benchmark.jmh.generated.Runner_protoBufSerializerBench_jmhTest S 23 protoBufSerializerBench S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E M 1 5 count 1 3 100 U 12 MILLISECONDS E E 
