@@ -2,8 +2,6 @@ package ygf.serialize.hessian;
 
 import com.caucho.hessian.io.Hessian2Input;
 import com.caucho.hessian.io.Hessian2Output;
-import org.w3c.dom.ls.LSInput;
-import ygf.benchmark.protobuf.People;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -26,27 +24,18 @@ public class HessianUtils {
      * @param person person
      * @return byte array
      */
-    public static byte[] serialize(Person person) {
+    public static byte[] serialize(Person person) throws Exception {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         Hessian2Output out = new Hessian2Output(bos);
-        byte[] data = null;
+        byte[] data;
 
-        try {
-            out.startMessage();
-            out.writeObject(person);
-            out.completeMessage();
-            out.close();
+        out.startMessage();
+        out.writeObject(person);
+        out.completeMessage();
+        out.close();
 
-            data = bos.toByteArray();
-        }catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            try {
-                bos.close();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-        }
+        data = bos.toByteArray();
+        bos.close();
 
         return data;
     }
@@ -57,27 +46,18 @@ public class HessianUtils {
      * @param byteArray byte array
      * @return person
      */
-    public static Object deserialize(byte[] byteArray){
+    public static Object deserialize(byte[] byteArray) throws Exception{
         ByteArrayInputStream bin = new ByteArrayInputStream(byteArray);
         Hessian2Input input = new Hessian2Input(bin);
 
         Object obj = null;
-        try {
-            input.startMessage();
+        input.startMessage();
 
-            obj = input.readObject();
+        obj = input.readObject();
 
-            input.completeMessage();
-        }catch (IOException e){
-            e.printStackTrace();
-        }finally {
-            try {
-                input.close();
-                bin.close();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-        }
+        input.completeMessage();
+        input.close();
+        bin.close();
 
         return obj;
     }
@@ -87,7 +67,7 @@ public class HessianUtils {
      *
      * @return person
      */
-    public static Person buildPerson(){
+    public static Person buildHessianPerson() {
         // friends
         Person john = new Person("John", 18, "I am his friend, John.", "ping-pong");
         Person jack = new Person("Jack", 19, "I am his friend, Jack.", "tennis");
@@ -126,9 +106,8 @@ public class HessianUtils {
     }
 
 
-
-    public static void main(String[] args){
-        Person person = buildPerson();
+    public static void main(String[] args) throws Exception{
+        Person person = buildHessianPerson();
         byte[] array = serialize(person);
 
         System.out.println(array.length);
