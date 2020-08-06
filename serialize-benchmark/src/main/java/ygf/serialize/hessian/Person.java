@@ -1,8 +1,9 @@
 package ygf.serialize.hessian;
 
-import java.awt.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -30,11 +31,32 @@ public class Person implements Serializable {
     /**
      * relatives
      */
-    private List<Person> relatives;
+    private Map<String, Person> relatives;
     /**
      * hobbies
      */
     private List<String> hobbies;
+
+    public Person(){ }
+
+    public Person(String name, Integer age, String desc){
+        this.name = name;
+        this.age = age;
+        this.desc = desc;
+    }
+
+    public Person(String name, Integer age, String desc, String hobbit){
+        this.name = name;
+        this.age = age;
+        this.desc = desc;
+
+        List<String> hobbies = new ArrayList<>();
+        hobbies.add(hobbit);
+        this.hobbies = hobbies;
+    }
+
+
+
 
     public String getName() {
         return name;
@@ -68,11 +90,11 @@ public class Person implements Serializable {
         this.friends = friends;
     }
 
-    public List<Person> getRelatives() {
+    public Map<String, Person> getRelatives() {
         return relatives;
     }
 
-    public void setRelatives(List<Person> relatives) {
+    public void setRelatives(Map<String, Person> relatives) {
         this.relatives = relatives;
     }
 
