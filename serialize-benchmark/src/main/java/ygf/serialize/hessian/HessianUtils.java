@@ -1,9 +1,12 @@
 package ygf.serialize.hessian;
 
+import com.caucho.hessian.io.Hessian2Input;
 import com.caucho.hessian.io.Hessian2Output;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * hessian person utils
@@ -43,6 +46,39 @@ public class HessianUtils {
         return data;
     }
 
+    /**
+     * deserialize
+     *
+     * @param byteArray byte array
+     * @return person
+     */
+    public static Object deserialize(byte[] byteArray){
+        ByteArrayInputStream bin = new ByteArrayInputStream(byteArray);
+        Hessian2Input input = new Hessian2Input(bin);
+
+        Object obj = null;
+        try {
+            input.startMessage();
+
+            obj = input.readObject();
+
+            input.completeMessage();
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            try {
+                input.close();
+                bin.close();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+
+        return obj;
+    }
+
+
+
     public static void main(String[] args){
         Person person = new Person();
         person.setName("test");
@@ -52,5 +88,9 @@ public class HessianUtils {
         byte[] array = serialize(person);
 
         System.out.println(array.length);
+
+        Object obj = deserialize(array);
+
+        System.out.println(obj);
     }
 }
