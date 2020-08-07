@@ -24,18 +24,27 @@ public class HessianUtils {
      * @param person person
      * @return byte array
      */
-    public static byte[] serialize(Person person) throws Exception {
+    public static byte[] serialize(Person person) {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         Hessian2Output out = new Hessian2Output(bos);
-        byte[] data;
+        byte[] data = null;
 
-        out.startMessage();
-        out.writeObject(person);
-        out.completeMessage();
-        out.close();
+        try {
+            out.startMessage();
+            out.writeObject(person);
+            out.completeMessage();
+            out.close();
 
-        data = bos.toByteArray();
-        bos.close();
+            data = bos.toByteArray();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                bos.close();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
 
         return data;
     }
@@ -46,18 +55,27 @@ public class HessianUtils {
      * @param byteArray byte array
      * @return person
      */
-    public static Object deserialize(byte[] byteArray) throws Exception{
+    public static Object deserialize(byte[] byteArray){
         ByteArrayInputStream bin = new ByteArrayInputStream(byteArray);
         Hessian2Input input = new Hessian2Input(bin);
 
         Object obj = null;
-        input.startMessage();
+        try {
+            input.startMessage();
 
-        obj = input.readObject();
+            obj = input.readObject();
 
-        input.completeMessage();
-        input.close();
-        bin.close();
+            input.completeMessage();
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            try {
+                input.close();
+                bin.close();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
 
         return obj;
     }
@@ -67,7 +85,7 @@ public class HessianUtils {
      *
      * @return person
      */
-    public static Person buildHessianPerson() {
+    public static Person buildHessianPerson(){
         // friends
         Person john = new Person("John", 18, "I am his friend, John.", "ping-pong");
         Person jack = new Person("Jack", 19, "I am his friend, Jack.", "tennis");
@@ -106,7 +124,8 @@ public class HessianUtils {
     }
 
 
-    public static void main(String[] args) throws Exception{
+
+    public static void main(String[] args){
         Person person = buildHessianPerson();
         byte[] array = serialize(person);
 

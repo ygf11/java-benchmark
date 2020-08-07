@@ -12,7 +12,6 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import ygf.benchmark.protobuf.People;
 import ygf.benchmark.protobuf.PersonUtil;
-import ygf.serialize.hessian.HessianUtils;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +30,7 @@ public class Runner {
     @Param({"10"})
     private int count;
 
-    public static void printSerializeSize() throws Exception{
+    public static void printSerializeSize() {
         People.Person person = PersonUtil.build();
         ygf.serialize.hessian.Person hessianPerson =
                 ygf.serialize.hessian.HessianUtils.buildHessianPerson();
@@ -59,7 +58,7 @@ public class Runner {
     }
 
     @Benchmark
-    public void hessianSerializerBench() throws Exception{
+    public void hessianSerializerBench(){
         ygf.serialize.hessian.Person person = ygf.serialize.hessian.HessianUtils.buildHessianPerson();
         for (int i = 0; i < count; ++i){
             ygf.serialize.hessian.HessianUtils.serialize(person);
@@ -67,7 +66,7 @@ public class Runner {
     }
 
     @Benchmark
-    public void hessianDeserializerBench() throws Exception{
+    public void hessianDeserializerBench()  {
         ygf.serialize.hessian.Person person = ygf.serialize.hessian.HessianUtils.buildHessianPerson();
         byte[] byteArray = ygf.serialize.hessian.HessianUtils.serialize(person);
         for (int i = 0; i < count; ++i) {
