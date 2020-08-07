@@ -21,17 +21,17 @@ public class HessianUtils {
     /**
      * serialize person
      *
-     * @param person person
+     * @param hessianPerson person
      * @return byte array
      */
-    public static byte[] serialize(Person person) {
+    public static byte[] serialize(HessianPerson hessianPerson) {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         Hessian2Output out = new Hessian2Output(bos);
         byte[] data = null;
 
         try {
             out.startMessage();
-            out.writeObject(person);
+            out.writeObject(hessianPerson);
             out.completeMessage();
             out.close();
 
@@ -85,49 +85,49 @@ public class HessianUtils {
      *
      * @return person
      */
-    public static Person buildHessianPerson(){
+    public static HessianPerson buildHessianPerson(){
         // friends
-        Person john = new Person("John", 18, "I am his friend, John.", "ping-pong");
-        Person jack = new Person("Jack", 19, "I am his friend, Jack.", "tennis");
-        Person theo = new Person("Theo", 20, "I am his friend, Theo.", "football");
-        Person tracy = new Person("Tracy", 17, "I am his friend, Tracy.", "skiing");
+        HessianPerson john = new HessianPerson("John", 18, "I am his friend, John.", "ping-pong");
+        HessianPerson jack = new HessianPerson("Jack", 19, "I am his friend, Jack.", "tennis");
+        HessianPerson theo = new HessianPerson("Theo", 20, "I am his friend, Theo.", "football");
+        HessianPerson tracy = new HessianPerson("Tracy", 17, "I am his friend, Tracy.", "skiing");
 
         // relatives
-        Person tom = new Person("Tom", 45, "I am his father, Tom.", "running");
-        Person lucy = new Person("Lucy", 43, "I am his mother, Lucy.", "cooking");
-        Person grace = new Person("grace", 25, "I am his old sister, Grace.", "swimming");
+        HessianPerson tom = new HessianPerson("Tom", 45, "I am his father, Tom.", "running");
+        HessianPerson lucy = new HessianPerson("Lucy", 43, "I am his mother, Lucy.", "cooking");
+        HessianPerson grace = new HessianPerson("grace", 25, "I am his old sister, Grace.", "swimming");
 
         // person
-        Person person = new Person("Andy", 20, "I am Andy.");
+        HessianPerson hessianPerson = new HessianPerson("Andy", 20, "I am Andy.");
 
         List<String> hobbies = new ArrayList<>();
         hobbies.add("football");
         hobbies.add("basketball");
-        person.setHobbies(hobbies);
+        hessianPerson.setHobbies(hobbies);
 
-        List<Person> friends = new ArrayList<>();
+        List<HessianPerson> friends = new ArrayList<>();
         friends.add(john);
         friends.add(jack);
         friends.add(theo);
         friends.add(tracy);
-        person.setFriends(friends);
+        hessianPerson.setFriends(friends);
 
-        Map<String, Person> relatives = new HashMap<>(8);
+        Map<String, HessianPerson> relatives = new HashMap<>(8);
         relatives.put("father-son", tom);
         relatives.put("mather-son", lucy);
         relatives.put("sister", grace);
 
-        person.setRelatives(relatives);
+        hessianPerson.setRelatives(relatives);
 
 
-        return person;
+        return hessianPerson;
     }
 
 
 
     public static void main(String[] args){
-        Person person = buildHessianPerson();
-        byte[] array = serialize(person);
+        HessianPerson hessianPerson = buildHessianPerson();
+        byte[] array = serialize(hessianPerson);
 
         System.out.println(array.length);
 

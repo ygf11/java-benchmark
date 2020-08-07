@@ -1,4 +1,4 @@
-package ygf.benchmark.protobuf;
+package ygf.serialize.protobuf;
 
 import static ygf.benchmark.protobuf.People.Person;
 

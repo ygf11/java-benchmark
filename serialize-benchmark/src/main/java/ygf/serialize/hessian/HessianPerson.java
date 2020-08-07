@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author yanggaofeng
  */
-public class Person implements Serializable {
+public class HessianPerson implements Serializable {
     /**
      * name
      */
@@ -27,25 +27,25 @@ public class Person implements Serializable {
     /**
      * friend list
      */
-    private List<Person> friends;
+    private List<HessianPerson> friends;
     /**
      * relatives
      */
-    private Map<String, Person> relatives;
+    private Map<String, HessianPerson> relatives;
     /**
      * hobbies
      */
     private List<String> hobbies;
 
-    public Person(){ }
+    public HessianPerson(){ }
 
-    public Person(String name, Integer age, String desc){
+    public HessianPerson(String name, Integer age, String desc){
         this.name = name;
         this.age = age;
         this.desc = desc;
     }
 
-    public Person(String name, Integer age, String desc, String hobbit){
+    public HessianPerson(String name, Integer age, String desc, String hobbit){
         this.name = name;
         this.age = age;
         this.desc = desc;
@@ -82,19 +82,19 @@ public class Person implements Serializable {
         this.desc = desc;
     }
 
-    public List<Person> getFriends() {
+    public List<HessianPerson> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<Person> friends) {
+    public void setFriends(List<HessianPerson> friends) {
         this.friends = friends;
     }
 
-    public Map<String, Person> getRelatives() {
+    public Map<String, HessianPerson> getRelatives() {
         return relatives;
     }
 
-    public void setRelatives(Map<String, Person> relatives) {
+    public void setRelatives(Map<String, HessianPerson> relatives) {
         this.relatives = relatives;
     }
 
@@ -116,13 +116,13 @@ public class Person implements Serializable {
             return false;
         }
 
-        Person person = (Person) o;
-        return Objects.equals(name, person.name) &&
-                Objects.equals(age, person.age) &&
-                Objects.equals(desc, person.desc) &&
-                Objects.equals(friends, person.friends) &&
-                Objects.equals(relatives, person.relatives) &&
-                Objects.equals(hobbies, person.hobbies);
+        HessianPerson hessianPerson = (HessianPerson) o;
+        return Objects.equals(name, hessianPerson.name) &&
+                Objects.equals(age, hessianPerson.age) &&
+                Objects.equals(desc, hessianPerson.desc) &&
+                Objects.equals(friends, hessianPerson.friends) &&
+                Objects.equals(relatives, hessianPerson.relatives) &&
+                Objects.equals(hobbies, hessianPerson.hobbies);
     }
 
     @Override

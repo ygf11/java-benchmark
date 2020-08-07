@@ -1,6 +1,5 @@
 package ygf.serialize.benchmark.jmh;
 
-
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
@@ -11,11 +10,13 @@ import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import ygf.benchmark.protobuf.People;
-import ygf.benchmark.protobuf.PersonUtil;
+import ygf.serialize.hessian.HessianPerson;
+import ygf.serialize.hessian.HessianUtils;
+import ygf.serialize.java.JavaPerson;
+import ygf.serialize.java.JavaPersonUtils;
+import ygf.serialize.protobuf.PersonUtil;
 
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
-import static ygf.serialize.hessian.HessianUtils.serialize;
 
 /**
  * de-serializer jmh benchmark
@@ -27,16 +28,23 @@ import static ygf.serialize.hessian.HessianUtils.serialize;
 @State(Scope.Benchmark)
 public class Runner {
 
-    @Param({"10"})
+    @Param({"100000"})
     private int count;
 
     public static void printSerializeSize() {
         People.Person person = PersonUtil.build();
-        ygf.serialize.hessian.Person hessianPerson =
-                ygf.serialize.hessian.HessianUtils.buildHessianPerson();
+        HessianPerson hessianPerson = HessianUtils.buildHessianPerson();
 
-        System.out.println("proto buf size:" + person.toByteArray().length);
-        System.out.println("hessian size:" + serialize(hessianPerson).length);
+        JavaPerson javaPerson = JavaPersonUtils.buildPerson();
+
+        System.out.println("proto buf size:" +
+                person.toByteArray().length);
+
+        System.out.println("hessian size:" +
+                HessianUtils.serialize(hessianPerson).length);
+
+        System.out.println("java size:" +
+                JavaPersonUtils.serialize(javaPerson).length);
     }
 
     @Benchmark
@@ -52,29 +60,42 @@ public class Runner {
         People.Person person = PersonUtil.build();
         byte[] byteArray = person.toByteArray();
         for (int i = 0; i < count; ++i) {
-            People.Person data = People.Person.parseFrom(byteArray);
-            assert Objects.equals(data, person);
+            People.Person.parseFrom(byteArray);
         }
     }
 
     @Benchmark
     public void hessianSerializerBench(){
-        ygf.serialize.hessian.Person person = ygf.serialize.hessian.HessianUtils.buildHessianPerson();
+        HessianPerson hessianPerson = HessianUtils.buildHessianPerson();
         for (int i = 0; i < count; ++i){
-            ygf.serialize.hessian.HessianUtils.serialize(person);
+            HessianUtils.serialize(hessianPerson);
         }
     }
 
     @Benchmark
     public void hessianDeserializerBench()  {
-        ygf.serialize.hessian.Person person = ygf.serialize.hessian.HessianUtils.buildHessianPerson();
-        byte[] byteArray = ygf.serialize.hessian.HessianUtils.serialize(person);
+        HessianPerson hessianPerson = HessianUtils.buildHessianPerson();
+        byte[] byteArray = HessianUtils.serialize(hessianPerson);
         for (int i = 0; i < count; ++i) {
-            Object data = ygf.serialize.hessian.HessianUtils.deserialize(byteArray);
-            assert Objects.equals(data, person);
+            HessianUtils.deserialize(byteArray);
+        }
+    }
+    @Benchmark
+    public void javaSerializerBench(){
+        JavaPerson javaPerson = JavaPersonUtils.buildPerson();
+        for (int i = 0; i < count; ++i){
+            JavaPersonUtils.serialize(javaPerson);
         }
     }
 
+    @Benchmark
+    public void javaDeserializerBench()  {
+        JavaPerson javaPerson = JavaPersonUtils.buildPerson();
+        byte[] byteArray = JavaPersonUtils.serialize(javaPerson);
+        for (int i = 0; i < count; ++i) {
+            JavaPersonUtils.deserialize(byteArray);
+        }
+    }
 
     public static void main(String[] args) throws Exception {
         printSerializeSize();
