@@ -14,6 +14,7 @@ import ygf.serialize.hessian.HessianPerson;
 import ygf.serialize.hessian.HessianUtils;
 import ygf.serialize.java.JavaPerson;
 import ygf.serialize.java.JavaPersonUtils;
+import ygf.serialize.json.JacksonUtils;
 import ygf.serialize.protobuf.PersonUtil;
 
 import java.util.concurrent.TimeUnit;
@@ -28,7 +29,7 @@ import java.util.concurrent.TimeUnit;
 @State(Scope.Benchmark)
 public class Runner {
 
-    @Param({"100000"})
+    @Param({"1000000"})
     private int count;
 
     public static void printSerializeSize() {
@@ -45,6 +46,9 @@ public class Runner {
 
         System.out.println("java size:" +
                 JavaPersonUtils.serialize(javaPerson).length);
+
+        System.out.println("jackson size:" +
+                JacksonUtils.serialize(javaPerson).length);
     }
 
     @Benchmark
@@ -96,6 +100,24 @@ public class Runner {
             JavaPersonUtils.deserialize(byteArray);
         }
     }
+
+    @Benchmark
+    public void jacksonSerializerBench(){
+        JavaPerson javaPerson = JavaPersonUtils.buildPerson();
+        for (int i = 0; i < count; ++i){
+            JacksonUtils.serialize(javaPerson);
+        }
+    }
+
+    @Benchmark
+    public void jacksonDeserializerBench()  {
+        JavaPerson javaPerson = JavaPersonUtils.buildPerson();
+        byte[] byteArray = JacksonUtils.serialize(javaPerson);
+        for (int i = 0; i < count; ++i) {
+            JacksonUtils.deserialize(byteArray, JavaPerson.class);
+        }
+    }
+
 
     public static void main(String[] args) throws Exception {
         printSerializeSize();
