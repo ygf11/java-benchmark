@@ -1,0 +1,13 @@
+{
+  "namespace": "ygf.serialize.avro",
+  "type": "record",
+  "name": "AvroPerson",
+  "fields":[
+     {"name": "name", "type": "string"},
+     {"name": "age", "type": "int"},
+     {"name": "desc", "type":"string"},
+     {"name": "friends", "type":[{"type": "array", "items":"AvroPerson", "default":[]},"null"]},
+     {"name": "relatives", "type":[{"type": "map", "items":"string","values": "AvroPerson"}, "null"]},
+     {"name": "hobbies", "type":[{"type": "array", "items": "string", "default":[]}, "null"]}
+     ]
+}
