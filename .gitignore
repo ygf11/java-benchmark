@@ -1,6 +1,7 @@
 /json-benchmark/target
 /list-benchmark/target
 /serialize-benchmark/target
+/serde-bench/target
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
